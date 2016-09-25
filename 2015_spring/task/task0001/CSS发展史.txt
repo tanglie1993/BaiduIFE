@@ -1,0 +1,4 @@
+1994年哈坤·利提出了CSS的最初建议。伯特·波斯（Bert Bos）当时正在设计一个叫做Argo的浏览器，他们决定一起合作设计CSS。
+1997年初，W3C内组织了专门管CSS的工作组，其负责人是克里斯·里雷。这个工作组开始讨论第一版中没有涉及到的问题，其结果是1998年5月出版的第二版要求。
+CSS3语言开发是朝着模块化发展的。 以前的规范作为一个模块实在是太庞大而且比较复杂，所以，把它分解为一些小的模块，更多新的模块也被加入进来。
+Due to the modularization, different modules have different stability and statuses. As of June 2012, there are over fifty CSS modules published from the CSS Working Group.
