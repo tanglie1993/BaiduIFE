@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>三列布局1</title>
+    <style>
+        .viewgroup {
+            position: fixed;
+            background-color:aquamarine;
+            width: 100%;
+            height: 300px;
+        }
+        .div-a {
+            position: fixed;
+            background-color: greenyellow;
+            width: 100px;
+            height: 300px;
+        }
+        .div-b {
+            position: fixed;
+            width: 100%;
+            height: 300px;
+            margin-left: 100px;
+            background-color: red;
+        }
+        .div-c {
+            position: fixed;
+            width: 100px;
+            height: 300px;
+            left: 100%;
+            margin-left: -100px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewgroup">
+        <img class="div-a" />
+        <img class="div-b" />
+        <img class="div-c" />
+    </div>
+</body>
+
+</html>
