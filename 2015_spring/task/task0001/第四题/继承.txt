@@ -1,0 +1,12 @@
+1简而言之就是受到父级或更上级样式元素的约束，
+ 
+2下面给一些样式供参考：
+ 
+font-family和color是继承的。 
+display、border、margin和padding属性是不继承
+用户可能会认为background-color是继承的，但实际上它不是。
+background-color没有设置时，它的默认值实际上昌特别值transparent，它的意思是“在它下面的”颜色可见，因此它与继承值不太相同。
+如果用户想从父元素继承属性，但是默认时它实际上没有那样做，那么用户就可以在所编写的规则中使用inherit的特殊值。
+假设用户想让类standout中所有<div>具有蓝色边框，并且它里面的所有段落具有相同的边框，可以编写如下规则：
+div.standout{ border:1px solid blue;}
+div.standout{ border:inherit;}

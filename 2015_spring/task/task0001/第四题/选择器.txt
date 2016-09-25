@@ -1,0 +1,64 @@
+派生选择器
+通过依据元素在其位置的上下文关系来定义样式，你可以使标记更加简洁。
+比方说，你希望列表中的 strong 元素变为斜体字，而不是通常的粗体字，可以这样定义一个派生选择器：
+li strong {
+    font-style: italic;
+    font-weight: normal;
+  }
+
+
+
+id 选择器
+id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。
+id 选择器以 "#" 来定义。
+下面的两个 id 选择器，第一个可以定义元素的颜色为红色，第二个定义元素的颜色为绿色：
+#red {color:red;}
+#green {color:green;}
+
+
+
+在 CSS 中，类选择器以一个点号显示：
+.center {text-align: center}
+在上面的例子中，所有拥有 center 类的 HTML 元素均为居中。
+在下面的 HTML 代码中，h1 和 p 元素都有 center 类。这意味着两者都将遵守 ".center" 选择器中的规则。
+<h1 class="center">
+This heading will be center-aligned
+</h1>
+
+<p class="center">
+This paragraph will also be center-aligned.
+</p>
+
+
+
+
+属性选择器
+下面的例子为带有 title 属性的所有元素设置样式：
+[title]
+{
+color:red;
+}
+
+
+
+后代选择器
+我们可以定义后代选择器来创建一些规则，使这些规则在某些文档结构中起作用，而在另外一些结构中不起作用。
+举例来说，如果您希望只对 h1 元素中的 em 元素应用样式，可以这样写：
+h1 em {color:red;}
+
+
+
+子元素选择器
+如果您不希望选择任意的后代元素，而是希望缩小范围，只选择某个元素的子元素，请使用子元素选择器（Child selector）。
+例如，如果您希望选择只作为 h1 元素子元素的 strong 元素，可以这样写：
+h1 > strong {color:red;}
+
+
+
+相邻兄弟选择器
+如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）。
+例如，如果要增加紧接在 h1 元素后出现的段落的上边距，可以这样写：
+h1 + p {margin-top:50px;}
+这个选择器读作：“选择紧接在 h1 元素后出现的段落，h1 和 p 元素拥有共同的父元素”。
+
+
