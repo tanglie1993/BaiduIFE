@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>div对齐实例 在线演示 DIVCSS5</title>
+    <style>
+        .viewgroup {
+            position: fixed;
+            width: 500px;
+            height: 300px;
+        }
+        
+        .upperleftcorner {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+        
+        .upperrightcorner {
+            position: absolute;
+            top: 0%;
+            left: 100%;
+            margin-top: 0px;
+            margin-left: -30px;
+        }
+        
+        .lowerleftcorner {
+            position: absolute;
+            top: 100%;
+            left: 0%;
+            margin-top: -30px;
+            margin-left: 0px;
+        }
+        
+        .lowerrightcorner {
+            position: absolute;
+            top: 100%;
+            left: 100%;
+            margin-top: -30px;
+            margin-left: -30px;
+        }
+        .topline{
+            position: absolute;
+            width: inherit;
+            height: 3px;
+            background-color: black;
+        }
+        .leftline{
+            position: absolute;
+            width: 3px;
+            height:inherit;
+            background-color: black;
+        }
+        .rightline{
+            width: 3px;
+            height: inherit;
+            float: right;
+            background-color: black;
+        }
+        .bottomline{
+            position: absolute;
+            width: inherit;
+            height: 3px;
+            top: 100%;
+            margin-top: -3px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="viewgroup">
+        <img class="topline" />
+        <img class="leftline" />
+        <img class="rightline" />
+        <img class="bottomline" />
+        <img class="upperleftcorner" src="corner1.jpg" />
+        <img class="upperrightcorner" src="corner2.jpg" />
+        <img class="lowerleftcorner" src="corner3.jpg" />
+        <img class="lowerrightcorner" src="corner4.jpg" />
+        
+    </div>
+</body>
+
+</html>
