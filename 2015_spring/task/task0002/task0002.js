@@ -28,24 +28,24 @@ function getPosition(element) {
     return result
 }
 
-function traversal(element) {
+function traversal(element, attribute) {
     if (element === null) {
         return;
     } else {
-        if(element.id != "" && element.id !== undefined){
-            console.log("element.id: " + element.id);
+        if(element[attribute] != "" && element[attribute] !== undefined){
+            console.log("element[attribute]: " + element[attribute]);
         }
         
         if (element.childNodes.length > 0) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                traversal(element.childNodes[i]);
+                traversal(element.childNodes[i], attribute);
             }
         }
     }
 }
 
 function traversal1(){
-    traversal(document.body);
+    traversal(document.body, "type");
 }
 
 
