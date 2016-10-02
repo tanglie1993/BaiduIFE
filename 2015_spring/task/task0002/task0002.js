@@ -17,9 +17,10 @@ function addEventHandle() {
     renderResult(result);
 }
 
-function initEvent() {
-    $("addbtn").addEventListener("click", addEventHandle, false);
+$.prototype.click11 = function(element, listener){
+    $(element).addEventListener("click", listener, false);
 }
 
-initEvent();
-
+new $().click11("result", function clicklistener() {
+    alert("onclick");
+});
