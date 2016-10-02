@@ -74,3 +74,15 @@ function each(arr, fn) {
   }
 }
 
+function getObjectLength(obj) {
+  var count = 0;
+  for(var i in obj){
+    count++;
+  }
+  return count;
+}
+
+function isEmail(emailStr) {
+  var pattern =new RegExp("^.+@.+\..+$");
+  return pattern.test(emailStr);
+}
