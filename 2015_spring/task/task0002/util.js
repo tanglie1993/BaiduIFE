@@ -132,4 +132,4 @@ function showHint(str) {
     }
     xmlhttp.open("GET", "/ajax/gethint.asp?q=" + str, true);
     xmlhttp.send();
-}
+}}
