@@ -5,10 +5,13 @@ function $(id) {
 function renderResult(result) {
     $("result").innerHTML = result;
 }
+//
+//换行、空格（全角/半角）、逗号（全角/半角）、顿号、分号
 
 
 $("button").onclick = function () {
-    var array = $("hobby").value.split(",");
+    var regex=/[\n\s,，、;；]/;
+    var array = $("hobby").value.split(regex);
     var map = new Object();
     for (var i = 0; i < array.length; i++) {
         map[array[i]] = 1;
