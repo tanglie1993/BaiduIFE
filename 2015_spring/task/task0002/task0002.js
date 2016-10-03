@@ -17,10 +17,30 @@ function addEventHandle() {
     renderResult(result);
 }
 
-$.prototype.click11 = function(element, listener){
-    $(element).addEventListener("click", listener, false);
-}
+ function getCookieValue(cookieName)  
+{  
+    var cookieValue = document.cookie;  
+    var cookieStartAt = cookieValue.indexOf(""+cookieName+"=");  
+    if(cookieStartAt==-1)  
+    {  
+        cookieStartAt = cookieValue.indexOf(cookieName+"=");  
+    }  
+    if(cookieStartAt==-1)  
+    {  
+        cookieValue = null;  
+    }  
+    else  
+    {  
+        cookieStartAt = cookieValue.indexOf("=",cookieStartAt)+1;  
+        cookieEndAt = cookieValue.indexOf(";",cookieStartAt);  
+        if(cookieEndAt==-1)  
+        {  
+            cookieEndAt = cookieValue.length;  
+        }  
+        cookieValue = unescape(cookieValue.substring(cookieStartAt,cookieEndAt));//解码latin-1  
+    }  
+    return cookieValue;  
+}  
 
-new $().click11("result", function clicklistener() {
-    alert("onclick");
-});
+
+$("result").innerHTML = document.cookie;

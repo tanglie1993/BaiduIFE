@@ -53,15 +53,15 @@ console.log(b); // [1, 3, 5, 7]
 
 
 function simpleTrim(str) {
-  var result = new String();
-  for(var i = 0; i < str.toString().length; i++){
-    var char = str.toString().charAt(i);
-    console.log(char);
-    if(char != " "){
-     result = result + char;
+    var result = new String();
+    for (var i = 0; i < str.toString().length; i++) {
+        var char = str.toString().charAt(i);
+        console.log(char);
+        if (char != " ") {
+            result = result + char;
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 function trim(str) {
@@ -69,20 +69,47 @@ function trim(str) {
 }
 
 function each(arr, fn) {
-  for(var i = 0; i < arr.length; i++){
-    fn(arr[i], i);
-  }
+    for (var i = 0; i < arr.length; i++) {
+        fn(arr[i], i);
+    }
 }
 
 function getObjectLength(obj) {
-  var count = 0;
-  for(var i in obj){
-    count++;
-  }
-  return count;
+    var count = 0;
+    for (var i in obj) {
+        count++;
+    }
+    return count;
 }
 
 function isEmail(emailStr) {
-  var pattern =new RegExp("^.+@.+\..+$");
-  return pattern.test(emailStr);
+    var pattern = new RegExp("^.+@.+\..+$");
+    return pattern.test(emailStr);
+}
+
+function isIE() { //ie?  
+    if (!!window.ActiveXObject || "ActiveXObject" in window)
+        return true;
+    else
+        return false;
+}
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=")
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1
+            c_end = document.cookie.indexOf(";", c_start)
+            if (c_end == -1) c_end = document.cookie.length
+            return unescape(document.cookie.substring(c_start, c_end))
+        }
+    }
+    return ""
+}
+
+function setCookie(c_name, value, expiredays) {
+    var exdate = new Date()
+    exdate.setDate(exdate.getDate() + expiredays)
+    document.cookie = c_name + "=" + escape(value) +
+        ((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
 }
