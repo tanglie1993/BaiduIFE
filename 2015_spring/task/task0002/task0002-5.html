@@ -4,21 +4,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <title>javascript获得鼠标位置</title>
     <style>
-        #pic{
-            position:fixed;
+        .pic {
             height: 100px;
             width: 100px;
-            background-color:bisque;
+            background-color: bisque;
+            border-width: 2px;
+            border-color: black;
         }
+        
+        .pic1 {
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            border-width: 2px;
+            border-color: green;
+        }
+        
     </style>
 </head>
 
 <body>
-    
-    鼠标X轴:<input id=xxx type=text>
-    鼠标Y轴:<input id=yyy type=text>
+
+    鼠标X轴:<input id=xxx type=text> 鼠标Y轴:
+    <input id=yyy type=text>
     <br/>
-    <div id="pic" ></div>
+    <ul   style="list-style:none">
+        <li>
+            <div id="pic" class="pic"></div>
+        </li>
+        <li>
+            <div class="pic1"></div>
+        </li>
+    </ul>
+
     <script src="js/task0002-5.js">
     </script>
 </body>

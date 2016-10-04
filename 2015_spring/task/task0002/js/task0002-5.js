@@ -15,6 +15,7 @@ function mouseMove(ev) {
 }
 
 function mouseDown(ev) {
+    ev.target.parentNode.removeChild(ev.target);
     if (!isDragging) {
         Ev = ev || window.event;
         var mousePos = mouseCoords(ev);
