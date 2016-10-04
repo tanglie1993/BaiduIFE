@@ -1,33 +1,94 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>task0002-3</title>
 
-    <style>
-        #test{
-            margin-left: -50px;
-            width: 200px;
-            position: absolute;
-        }
-        .testItem0{
-            position:absolute; 
-        }
-        .testItem1{
-            position:absolute; 
-            left: 200px;
-        }
-    </style>
-    
+<head>
+   <style type="text/css">
+    #scroller {
+        position: relative;
+    }
+    #scroller .innerScrollArea {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #scroller ul {
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    #scroller li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: absolute;
+    }
+</style>
 </head>
 
 <body>
-    <div id="test">
-    <img id="test1" class="testItem0" src="img/test001.png" />
-    <img class="testItem1" src="img/test002.png" />
+    
+    <div id="scroller" style="width: 550px; height: 400px; margin: 0 auto;">
+    <div class="innerScrollArea">
+        <ul>
+            <!-- Define photos here -->
+            <li><img src="img/test001.png" width="600" height="400" /></li>
+            <li><img src="img/test002.png" width="267" height="400" /></li>
+            
+            <li><img src="img/test001.png" width="600" height="400" /></li>
+            <li><img src="img/test002.png" width="535" height="400" /></li>
+            <li><img src="img/test001.png" width="267" height="400" /></li>
+            <li><img src="img/test002.png" width="267" height="400" /></li>
+        </ul>
     </div>
-    <script src="js/jquery-3.1.1.js"></script>
-    <script src="js/task0002-3.js"></script>
+</div>
+    
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var scroller = $('#scroller div.innerScrollArea');
+        var scrollerContent = scroller.children('ul');
+        scrollerContent.children().clone().appendTo(scrollerContent);
+        var curX = 0;
+        scrollerContent.children().each(function(){
+            var $this = $(this);
+            $this.css('left', curX);
+            curX += $this.outerWidth(true);
+        });
+        var fullW = curX / 2;
+        var viewportW = scroller.width();
+
+        // Scrolling speed management
+        var controller = {curSpeed:0, fullSpeed:2};
+        var $controller = $(controller);
+        var tweenToNewSpeed = function(newSpeed, duration)
+        {
+            if (duration === undefined)
+                duration = 600;
+            $controller.stop(true).animate({curSpeed:newSpeed}, duration);
+        };
+
+        // Pause on hover
+        scroller.hover(function(){
+            tweenToNewSpeed(0);
+        }, function(){
+            tweenToNewSpeed(controller.fullSpeed);
+        });
+
+        // Scrolling management; start the automatical scrolling
+        var doScroll = function()
+        {
+            var curX = scroller.scrollLeft();
+            var newX = curX + controller.curSpeed;
+            if (newX > fullW*2 - viewportW)
+                newX -= fullW;
+            scroller.scrollLeft(newX);
+        };
+        setInterval(doScroll, 20);
+        tweenToNewSpeed(controller.fullSpeed);
+    });
+</script>
 </body>
 
 </html>
