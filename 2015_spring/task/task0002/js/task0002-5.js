@@ -3,6 +3,7 @@ var offsetX = 0;
 var offsetY = 0;
 
 function mouseMove(ev) {
+    console.log("mouseMove");
     if (isDragging) {
         Ev = ev || window.event;
         var mousePos = mouseCoords(ev);
@@ -27,7 +28,10 @@ function mouseDown(ev) {
     } else {
         isDragging = false;
     }
+}
 
+function mouseUp(ev) {
+    isDragging = false;
 }
 
 function mouseCoords(ev) {
@@ -45,3 +49,4 @@ function mouseCoords(ev) {
 
 document.onmousemove = mouseMove;
 document.getElementById("pic").onmousedown = mouseDown;
+document.getElementById("pic").onmouseup = mouseUp;
