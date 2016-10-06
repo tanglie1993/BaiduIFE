@@ -181,7 +181,7 @@
             left: 20px;
             top: 9px;
         }
-    
+        
         .categoryNameText {
             position: absolute;
             left: 50px;
@@ -190,7 +190,7 @@
             font-size: 14px;
         }
         
-        .categoryNameDiv{
+        .categoryNameDiv {
             height: 28px;
             position: relative;
         }
@@ -215,9 +215,45 @@
             height: 28px;
         }
         
+        .dateDiv {
+            height: 28px;
+            position: relative;
+            background-color: #FAFAEE;
+            margin-left: 1px;
+        }
+        
+        .dateText {
+            position: absolute;
+            left: 20px;
+            top: 7px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        .todoName {
+            height: 28px;
+        }
+        
+        .todoNameText {
+            margin: 0px;
+            position: relative;
+            left: 35px;
+            top: 7px;
+            font-size: 14px;
+        }
+        
+        #dateTaskDiv{
+            position: absolute;
+            top: 41px;
+            left:0px;
+            right:0px;
+            bottom:40px;
+        }
+        
         ul {
             list-style-type: none;
             margin-left: -41px;
+            margin-top: 0px;
         }
     </style>
 
@@ -230,7 +266,7 @@
 
     <div id="categoryColumn">
 
-        <ul class="list">
+        <ul>
             <li>
                 <div class="categoryNameDiv">
                     <img class="categoryNameImage" src="img/folder.png" />
@@ -275,6 +311,32 @@
                 <p class="selectTaskText">已完成</p>
             </div>
         </div>
+        <div id="dateTaskDiv">
+            <ul>
+                <li>
+                    <div class="dateDiv">
+                        <p class="dateText">2015-04-28</p>
+                    </div>
+
+                    <ul>
+                        <li class="todoName">
+                            <p class="todoNameText">to-do 1</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="dateDiv">
+                        <p class="dateText">2015-04-29</p>
+                    </div>
+                    <ul>
+                        <li class="todoName">
+                            <p class="todoNameText">to-do 2</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
         <div class="addCategoryDiv">
             <img class="addCategoryImage" src="img/addcategory.png" />
             <p class="addCategoryText">新增任务</p>
