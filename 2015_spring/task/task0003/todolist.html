@@ -6,45 +6,17 @@
     <title>task0002-1</title>
 
     <style>
-        #header {
-            position: absolute;
-            width: 100%;
-            height: 60px;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            background-color: #DDDDDD;
-            border: 1px solid #CECECE;
-        }
-        
-        #title {
-            color: #A0A0A0;
-            font-size: 18px;
-            position: relative;
-            margin-top: 22px;
-            margin-left: 12px;
-            font-family: verdana;
-            top: 0px;
-        }
-        
-        #categoryColumn {
-            position: absolute;
-            top: 61px;
-            bottom: 0px;
-            left: 0px;
-            width: 230px;
-            background-color: #F2F2F2;
+        .border {
             border: 1px solid #CECECE;
         }
         
         .addCategoryDiv {
             background-color: #EEEEEE;
-            border: 1px solid #CECECE;
             width: 100%;
-            margin-left: -1px;
             margin-bottom: -1px;
             height: 40px;
             bottom: 0px;
+            left: -1px;
             position: absolute;
         }
         
@@ -64,30 +36,8 @@
             left: 22px;
         }
         
-        #tasksColumn {
-            position: absolute;
-            top: 61px;
-            bottom: 0px;
-            left: 230px;
-            width: 230px;
-            background-color: white;
-            border: 1px solid #CECECE;
-        }
-        
-        #tasksHeader {
-            background-color: #EEEEEE;
-            border: 1px solid #CECECE;
-            width: 100%;
-            margin-left: -1px;
-            margin-bottom: -1px;
-            height: 40px;
-            top: -1px;
-            position: absolute;
-        }
-        
         .selectTasksDiv {
             background-color: white;
-            border: 1px solid #CECECE;
             width: 45px;
             height: 22px;
             float: left;
@@ -101,22 +51,11 @@
             font-size: 12px;
         }
         
-        #selectedTaskColumn {
-            position: absolute;
-            top: 61px;
-            bottom: 0px;
-            left: 460px;
-            right: -2px;
-            border: 1px solid #CECECE;
-        }
-        
         #selectedTaskTitleDiv {
             background-color: #F2F2F2;
-            border: 1px solid #CECECE;
             width: 100%;
             height: 50px;
             margin-left: -1px;
-            margin-top: -1px;
         }
         
         #selectedTaskTitleText {
@@ -143,7 +82,6 @@
         #selectedTaskTimeDiv {
             position: relative;
             background-color: #FAFAEE;
-            border: 1px solid #CECECE;
             width: 100%;
             height: 50px;
             margin-left: -1px;
@@ -160,9 +98,8 @@
         #selectedTaskContentDiv {
             background-color: white;
             position: absolute;
-            border: 1px solid #CECECE;
             top: 102px;
-            bottom: -1px;
+            bottom: 0px;
             left: 0px;
             right: -1px;
             margin-left: -1px;
@@ -281,16 +218,6 @@
             height: 20px;
         }
         
-        #selectedTaskContentButtonsDiv {
-            position: absolute;
-            height: 40px;
-            bottom: -1px;
-            left: -1px;
-            right: -1px;
-            background-color: #EEEEEE;
-            border: 1px solid #CECECE;
-        }
-        
         #selectedTaskContentTextDiv {
             position: absolute;
             top: 0px;
@@ -309,11 +236,42 @@
 </head>
 
 <body style="height: 100%;">
-    <div id="header">
+    <style>
+        #header {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: #DDDDDD;
+        }
+    </style>
+    <div id="header" class="border">
+        <style>
+            #title {
+                color: #A0A0A0;
+                font-size: 18px;
+                position: relative;
+                margin-top: 22px;
+                margin-left: 12px;
+                font-family: verdana;
+                top: 0px;
+            }
+        </style>
         <p id="title">GTD Tools</p>
     </div>
-
-    <div id="categoryColumn">
+    <style>
+        #categoryColumn {
+            position: absolute;
+            top: 61px;
+            bottom: 0px;
+            left: 0px;
+            width: 230px;
+            background-color: #F2F2F2;
+        }
+    </style>
+    <div id="categoryColumn" class="border">
 
         <ul>
             <li>
@@ -342,21 +300,42 @@
                 </ul>
             </li>
         </ul>
-        <div class="addCategoryDiv">
+        <div class="addCategoryDiv border">
             <img class="addCategoryImage" src="img/addcategory.png" />
             <p class="addCategoryText">新增分类</p>
         </div>
     </div>
 
-    <div id="tasksColumn">
-        <div id="tasksHeader">
-            <div class="selectTasksDiv">
+    <style>
+        #tasksColumn {
+            position: absolute;
+            top: 61px;
+            bottom: 0px;
+            left: 230px;
+            width: 230px;
+            background-color: white;
+        }
+    </style>
+    <div id="tasksColumn" class="border">
+        <style>
+            #tasksHeader {
+                background-color: #EEEEEE;
+                width: 100%;
+                margin-left: -1px;
+                margin-bottom: -1px;
+                height: 40px;
+                top: -1px;
+                position: absolute;
+            }
+        </style>
+        <div id="tasksHeader" class="border">
+            <div class="selectTasksDiv border">
                 <p class="centerInParentText">所有</p>
             </div>
-            <div class="selectTasksDiv">
+            <div class="selectTasksDiv border">
                 <p class="centerInParentText">未完成</p>
             </div>
-            <div class="selectTasksDiv">
+            <div class="selectTasksDiv border">
                 <p class="centerInParentText">已完成</p>
             </div>
         </div>
@@ -386,51 +365,71 @@
             </ul>
         </div>
 
-        <div class="addCategoryDiv">
+        <div class="addCategoryDiv border">
             <img class="addCategoryImage" src="img/addcategory.png" />
             <p class="addCategoryText">新增任务</p>
         </div>
     </div>
 
+    <style>
+        #selectedTaskColumn {
+            position: absolute;
+            top: 61px;
+            bottom: 0px;
+            left: 460px;
+            right: -2px;
+        }
+    </style>
     <div id="selectedTaskColumn">
-        <div id="selectedTaskTitleDiv">
+        <div id="selectedTaskTitleDiv" class="border">
             <p id="selectedTaskTitleText">to-do 6</p>
             <img id="tickImage" src="img/tick.png" />
             <img id="writeImage" src="img/write.png" />
             <input id="selectedTaskNameInput" />
         </div>
 
-        <div id="selectedTaskTimeDiv">
+        <div id="selectedTaskTimeDiv" class="border">
             <p id="selectedTaskTimeText">任务日期：2015-04-30</p>
             <input id="selectedTaskTimeInput" type="date" value="2016-01-01" />
         </div>
 
-        <div id="selectedTaskContentDiv">
+        <div id="selectedTaskContentDiv" class="border">
             <div id="selectedTaskContentTextDiv">
                 <p id="selectedTaskContentText">ssssss</p>
                 <textarea id="selectedTaskContentTextArea"></textarea>
             </div>
-            <div id="selectedTaskContentButtonsDiv">
+            <style>
+                #selectedTaskContentButtonsDiv {
+                    position: absolute;
+                    height: 40px;
+                    bottom: -1px;
+                    left: -1px;
+                    right: -1px;
+                    background-color: #EEEEEE;
+                }
+            </style>
+            <div id="selectedTaskContentButtonsDiv" class="border">
                 <style>
-                    .baseContentDiv{
+                    .baseContentDiv {
                         position: absolute;
                         background-color: white;
-                        border: 1px solid #CECECE;
                         width: 45px;
                         height: 22px;
-                        top:7px;
+                        top: 7px;
                     }
+                    
                     #saveContentDiv {
-                        right:65px;
+                        right: 65px;
                     }
+                    
                     #cancelContentDiv {
-                        right:10px;
+                        right: 10px;
                     }
                 </style>
-                <div id="saveContentDiv" class="baseContentDiv">
+                <div id="saveContentDiv" class="baseContentDiv border">
                     <p class="centerInParentText">确定</p>
                 </div>
-                <div id="cancelContentDiv" class="baseContentDiv">
+                <div id="cancelContentDiv" class="baseContentDiv border">
                     <p class="centerInParentText">取消</p>
                 </div>
             </div>
