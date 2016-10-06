@@ -176,13 +176,46 @@
             height: 100%;
         }
         
-        .categoryName{
+        .categoryNameImage {
+            position: absolute;
+            left: 20px;
+            top: 9px;
+        }
+    
+        .categoryNameText {
+            position: absolute;
+            left: 50px;
+            top: 7px;
+            margin: 0px;
+            font-size: 14px;
         }
         
-        .taskName{
+        .categoryNameDiv{
+            height: 28px;
+            position: relative;
         }
         
-        ul{
+        .taskNameImage {
+            float: left;
+            margin-left: 45px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .taskNameText {
+            margin: 0px;
+            position: relative;
+            left: 15px;
+            top: 7px;
+            font-size: 14px;
+        }
+        
+        .taskName {
+            background-color: white;
+            height: 28px;
+        }
+        
+        ul {
             list-style-type: none;
             margin-left: -41px;
         }
@@ -199,24 +232,28 @@
 
         <ul class="list">
             <li>
-                <p class="categoryName">ddddd</p>
+                <div class="categoryNameDiv">
+                    <img class="categoryNameImage" src="img/folder.png" />
+                    <p class="categoryNameText">百度IFE项目 (10)</p>
+                </div>
+
                 <ul>
-                    <li  class="taskName">menu1</li>
-                    <li  class="taskName">menu2</li>
-                    <li class="taskName">menu3</li>
-                    <li class="taskName">menu4</li>
+                    <li class="taskName">
+                        <img class="taskNameImage" src="img/task.png" />
+                        <p class="taskNameText">menu1</p>
+                    </li>
                 </ul>
             </li>
             <li>
-                <p class="categoryName">ddddd</p>
+                <div class="categoryNameDiv">
+                    <img class="categoryNameImage" src="img/folder.png" />
+                    <p class="categoryNameText">毕业设计 (6)</p>
+                </div>
                 <ul>
-                    <li class="taskName">menu11</li>
-                    <li class="taskName">menu12</li>
-                    <li class="taskName">menu13</li>
-                    <li class="taskName">menu14</li>
-                    <li class="taskName">menu15</li>
-                    <li class="taskName">menu16</li>
-                    <li class="taskName">menu17</li>
+                    <li class="taskName">
+                        <img class="taskNameImage" src="img/task.png" />
+                        <p class="taskNameText">menu1</p>
+                    </li>
                 </ul>
             </li>
         </ul>
