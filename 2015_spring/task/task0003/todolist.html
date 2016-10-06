@@ -95,10 +95,9 @@
             margin-left: 9px;
         }
         
-        .selectTaskText {
-            position: relative;
+        .centerInParentText {
+            text-align: center;
             margin-top: 4px;
-            margin-left: 4px;
             font-size: 12px;
         }
         
@@ -142,6 +141,7 @@
         }
         
         #selectedTaskTimeDiv {
+            position: relative;
             background-color: #FAFAEE;
             border: 1px solid #CECECE;
             width: 100%;
@@ -170,19 +170,27 @@
         }
         
         #selectedTaskContentText {
+            margin-top: 0px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        #selectedTaskContentTextArea {
             background-color: white;
+            position: absolute;
+            top: 0px;
+            bottom: -40px;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             -o-box-sizing: border-box;
-            overflow:auto;
-background-attachment:fixed;
-background-repeat:no-repeat;
-border-style:solid; 
-
-border-color:#FFFFFF
+            overflow: auto;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            border-style: solid;
+            border-color: #FFFFFF
         }
         
         .categoryNameImage {
@@ -259,6 +267,38 @@ border-color:#FFFFFF
             bottom: 40px;
         }
         
+        #selectedTaskNameInput {
+            position: absolute;
+            height: 20px;
+            top: 12px;
+            left: 10px;
+        }
+        
+        #selectedTaskTimeInput {
+            position: absolute;
+            left: 88px;
+            top: 12px;
+            height: 20px;
+        }
+        
+        #selectedTaskContentButtonsDiv {
+            position: absolute;
+            height: 40px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            background-color: #EEEEEE;
+            border: 1px solid #CECECE;
+        }
+        
+        #selectedTaskContentTextDiv {
+            position: absolute;
+            top: 0px;
+            bottom: 40px;
+            left: 0px;
+            right: 0px;
+        }
+        
         ul {
             list-style-type: none;
             margin-left: -41px;
@@ -311,13 +351,13 @@ border-color:#FFFFFF
     <div id="tasksColumn">
         <div id="tasksHeader">
             <div class="selectTasksDiv">
-                <p class="selectTaskText">所有</p>
+                <p class="centerInParentText">所有</p>
             </div>
             <div class="selectTasksDiv">
-                <p class="selectTaskText">未完成</p>
+                <p class="centerInParentText">未完成</p>
             </div>
             <div class="selectTasksDiv">
-                <p class="selectTaskText">已完成</p>
+                <p class="centerInParentText">已完成</p>
             </div>
         </div>
         <div id="dateTaskDiv">
@@ -339,7 +379,7 @@ border-color:#FFFFFF
                     </div>
                     <ul>
                         <li class="todoName">
-                            <p class="todoNameText">to-do 2</p>
+                            <p id="todo2" class="todoNameText">to-do 2</p>
                         </li>
                     </ul>
                 </li>
@@ -357,16 +397,47 @@ border-color:#FFFFFF
             <p id="selectedTaskTitleText">to-do 6</p>
             <img id="tickImage" src="img/tick.png" />
             <img id="writeImage" src="img/write.png" />
+            <input id="selectedTaskNameInput" />
         </div>
 
         <div id="selectedTaskTimeDiv">
             <p id="selectedTaskTimeText">任务日期：2015-04-30</p>
+            <input id="selectedTaskTimeInput" type="date" value="2016-01-01" />
         </div>
 
         <div id="selectedTaskContentDiv">
-            <textarea id="selectedTaskContentText"></textarea>
+            <div id="selectedTaskContentTextDiv">
+                <p id="selectedTaskContentText">ssssss</p>
+                <textarea id="selectedTaskContentTextArea"></textarea>
+            </div>
+            <div id="selectedTaskContentButtonsDiv">
+                <style>
+                    .baseContentDiv{
+                        position: absolute;
+                        background-color: white;
+                        border: 1px solid #CECECE;
+                        width: 45px;
+                        height: 22px;
+                        top:7px;
+                    }
+                    #saveContentDiv {
+                        right:65px;
+                    }
+                    #cancelContentDiv {
+                        right:10px;
+                    }
+                </style>
+                <div id="saveContentDiv" class="baseContentDiv">
+                    <p class="centerInParentText">确定</p>
+                </div>
+                <div id="cancelContentDiv" class="baseContentDiv">
+                    <p class="centerInParentText">取消</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="todolist.js"></script>
 </body>
 
 </html>
