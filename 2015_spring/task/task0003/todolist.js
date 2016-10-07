@@ -5,99 +5,117 @@ function $(id) {
 var isInEditMode = false;
 var selectedItem = selectData();
 
-function switchToEditMode(){
+function switchToEditMode() {
     $("selectedTaskTitleText").style.visibility = "hidden";
     $("tickImage").style.visibility = "hidden";
     $("writeImage").style.visibility = "hidden";
     $("selectedTaskNameInput").style.visibility = "visible";
     $("selectedTaskNameInput").value = selectedItem.title;
-    
+
 
     $("selectedTaskTimeInput").style.visibility = "visible";
     $("selectedTaskTimeText").innerHTML = "任务日期";
     $("selectedTaskTimeInput").value = selectedItem.date;
-    
+
     $("selectedTaskContentText").style.visibility = "hidden";
     $("selectedTaskContentTextArea").style.visibility = "visible";
     $("selectedTaskContentTextArea").value = selectedItem.content;
-    
-    
+
+
     $("saveContentDiv").style.visibility = "visible";
     $("cancelContentDiv").style.visibility = "visible";
 
     isInEditMode = true;
 }
 
-function switchToViewMode(){
+function switchToViewMode() {
     selectedItem.title = $("selectedTaskNameInput").value;
     $("selectedTaskTitleText").style.visibility = "visible";
     $("tickImage").style.visibility = "visible";
     $("writeImage").style.visibility = "visible";
     $("selectedTaskNameInput").style.visibility = "hidden";
     $("selectedTaskTitleText").innerHTML = selectedItem.title;
-    
+
     selectedItem.date = $("selectedTaskTimeInput").value;
     $("selectedTaskTimeInput").style.visibility = "hidden";
     $("selectedTaskTimeText").innerHTML = "任务日期：" + selectedItem.date;
-    
+
     selectedItem.content = $("selectedTaskContentTextArea").value;
     $("selectedTaskContentText").style.visibility = "visible";
     $("selectedTaskContentText").innerHTML = selectedItem.content;
     $("selectedTaskContentTextArea").style.visibility = "hidden";
-    
+
     $("saveContentDiv").style.visibility = "hidden";
     $("cancelContentDiv").style.visibility = "hidden";
-    
+
     isInEditMode = false;
-    
+
     window.localStorage.setItem(selectedItem.id, JSON.stringify(selectedItem));
 }
 
-function initElements(){
-    $("saveContentDiv").onclick = function () { 
+function initElements() {
+    $("saveContentDiv").onclick = function () {
         switchToViewMode();
     };
-    $("cancelContentDiv").onclick = function () { 
+    $("cancelContentDiv").onclick = function () {
         switchToViewMode();
     };
-    $("writeImage").onclick = function () { 
+    $("writeImage").onclick = function () {
         switchToEditMode();
     };
-    
+
     $("selectedTaskNameInput").style.visibility = "hidden";
     $("selectedTaskTitleText").innerHTML = selectedItem.title;
-    
+
     $("selectedTaskTimeInput").style.visibility = "hidden";
     $("selectedTaskTimeText").innerHTML = "任务日期：" + selectedItem.date;
-    
+
     $("selectedTaskContentText").innerHTML = selectedItem.content;
     $("selectedTaskContentTextArea").style.visibility = "hidden";
-    
+
     $("saveContentDiv").style.visibility = "hidden";
     $("cancelContentDiv").style.visibility = "hidden";
 }
 
-function selectData(){
-    var result = new Array();
-    for (var i = 0; i <= window.localStorage.length - 1; i++) {
-        var key = window.localStorage.key(i);
-        var val = window.localStorage.getItem(key); 
-        result.push(val);
-    }
-    if(result.length > 0){
-        console.log("result[0]");
-        return JSON.parse(result[0]);
-    }else{
-        var item = new Object();
-        item.id = 1000;
-        item.title = "title";
-        item.date = "2016-01-01";
-        item.content = "content";
-        console.log("item");
-        return item;
-    }
+function fillList() {
+    var tasksByDate = selectAllTasksSortByDate();
+    for(var i = 0; i < tasksByDate.length; i++){
+        addOuterListItem(tasksByDate[i]);
+    } 
 }
 
+function addOuterListItem(tasksInDate){
+    var outerListItem = document.createElement("li");
+    addOuterListItemTitle(outerListItem, tasksInDate[0].date);
+    for(var i = 0; i < tasksInDate.length; i++){
+        var innerList = document.createElement("ul");
+        addInnerListItem(innerList, tasksInDate[i].title);
+        outerListItem.appendChild(innerList);
+    } 
+    $("dateTaskList").appendChild(outerListItem);
+}
+
+function addOuterListItemTitle(outerListItem, date){
+    var outerListItemTitleDiv = document.createElement("div");
+    outerListItemTitleDiv.className = "dateDiv";
+    var outerListItemTitleContent = document.createElement("p");
+    outerListItemTitleContent.className = "dateText";
+    outerListItemTitleContent.innerHTML = date;
+    outerListItemTitleDiv.appendChild(outerListItemTitleContent);
+    outerListItem.appendChild(outerListItemTitleDiv);
+}
+
+function addInnerListItem(innerList, title){
+    var innerListItem = document.createElement("li");
+    innerListItem.className = "todoName";
+    var innerListItemContent = document.createElement("p");
+    innerListItemContent.className = "todoNameText";
+    innerListItemContent.innerHTML = title;
+    innerListItem.appendChild(innerListItemContent);
+    innerList.appendChild(innerListItem);
+}
+
+fillList();
 initElements();
 //switchToEditMode();
 //switchToViewMode();
