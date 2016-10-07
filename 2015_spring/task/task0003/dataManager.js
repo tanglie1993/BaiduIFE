@@ -50,12 +50,43 @@ function selectTasksSortByDate(type){
     return result;
 }
 
+function getFolderList(){
+    var result = new Array();
+    var projects = new Object();
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id >= 10000 && val.id < 20000){
+            if(projects[val.folder] === undefined){
+                projects[val.folder] = new Array();
+            }
+            projects[val.folder].push(val);
+        }
+    }
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id < 20000){
+            continue;
+        }
+        val.projects = projects[val.id];
+        result.push(val);
+    }
+    return result;
+}
+
 function getSortedStorage(){
     var result = new Array();
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
         var val = window.localStorage.getItem(key); 
-        result.push(JSON.parse(val));
+        val = JSON.parse(val);
+        if(val.id > 9999){
+            continue;
+        }
+        result.push(val);
     }
     result.sort(function(val1, val2){
         var dateArray1 = val1.date.split("-");

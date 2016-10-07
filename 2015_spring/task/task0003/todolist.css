@@ -149,14 +149,14 @@
     position: relative;
 }
 
-.taskNameImage {
+.projectNameImage {
     float: left;
     margin-left: 45px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.taskNameText {
+.projectNameText {
     margin: 0px;
     position: relative;
     left: 15px;
@@ -164,7 +164,7 @@
     font-size: 14px;
 }
 
-.taskName {
+.projectName {
     background-color: white;
     height: 28px;
 }
