@@ -75,10 +75,33 @@ function initElements() {
 
     $("saveContentDiv").style.visibility = "hidden";
     $("cancelContentDiv").style.visibility = "hidden";
+    
+    $("finishedTasksButton").onclick = function(){
+        $("finishedTasksButton").className = "selectTasksDiv border";
+        $("unfinishedTasksButton").className = "unselectTasksDiv";
+        $("allTasksButton").className = "unselectTasksDiv";
+        fillList("finished");
+    }
+    $("unfinishedTasksButton").onclick = function(){
+        $("finishedTasksButton").className = "unselectTasksDiv";
+        $("unfinishedTasksButton").className = "selectTasksDiv border";
+        $("allTasksButton").className = "unselectTasksDiv";
+        fillList("unfinished");
+    }
+    $("allTasksButton").onclick = function(){
+        $("finishedTasksButton").className = "unselectTasksDiv";
+        $("unfinishedTasksButton").className = "unselectTasksDiv";
+        $("allTasksButton").className = "selectTasksDiv border";
+        fillList("all");
+    }
+    $("finishedTasksButton").className = "unselectTasksDiv";
+    $("unfinishedTasksButton").className = "unselectTasksDiv";
+    $("allTasksButton").className = "selectTasksDiv border";
 }
 
-function fillList() {
-    var tasksByDate = selectAllTasksSortByDate();
+function fillList(type) {
+    $("dateTaskList").innerHTML = "";
+    var tasksByDate = selectTasksSortByDate(type);
     for(var i = 0; i < tasksByDate.length; i++){
         addOuterListItem(tasksByDate[i]);
     } 
@@ -115,7 +138,7 @@ function addInnerListItem(innerList, title){
     innerList.appendChild(innerListItem);
 }
 
-fillList();
+fillList("all");
 initElements();
 //switchToEditMode();
 //switchToViewMode();

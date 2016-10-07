@@ -37,6 +37,14 @@
     margin-left: 9px;
 }
 
+.unselectTasksDiv {
+    width: 47px;
+    height: 24px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 .centerInParentText {
     text-align: center;
     margin-top: 4px;
