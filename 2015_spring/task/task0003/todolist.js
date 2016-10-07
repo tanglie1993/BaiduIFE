@@ -97,6 +97,14 @@ function initElements() {
     $("finishedTasksButton").className = "unselectTasksDiv";
     $("unfinishedTasksButton").className = "unselectTasksDiv";
     $("allTasksButton").className = "selectTasksDiv border";
+    
+    $("addCategoryImage").onclick = function(){
+        var newFolderName = prompt("请输入分类名称");
+        if(newFolderName !== null){
+            addFolder(newFolderName);
+            fillProjectsList();
+        }
+    }
 }
 
 function fillTasksList(type) {

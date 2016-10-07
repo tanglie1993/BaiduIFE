@@ -19,6 +19,27 @@ function selectData(){
     }
 }
 
+function addFolder(name){
+    var folder = new Object();
+    var maxId = getFolderMaxId();
+    folder.id = maxId+1;
+    folder.name = name;
+    window.localStorage.setItem(folder.id, JSON.stringify(folder));
+}
+
+function getFolderMaxId(){
+    var maxId = 20000;
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id >= 20000 && val.id > maxId){
+            maxId = val.id;
+        }
+    }
+    return maxId;
+}
+
 function selectTasksSortByDate(type){
     var result = new Array();
     var resultDay = new Array();
@@ -72,6 +93,9 @@ function getFolderList(){
             continue;
         }
         val.projects = projects[val.id];
+        if(val.projects === undefined){
+            val.projects = new Array();
+        }
         result.push(val);
     }
     return result;
