@@ -147,6 +147,9 @@ function addInnerListItem(innerList, title){
 }
 
 function fillProjectsList(){
+    while ($("projectList").hasChildNodes()) {
+        $("projectList").removeChild($("projectList").lastChild);
+    }
     var folderList = getFolderList();
     for(var i = 0; i < folderList.length; i++){
         addFolderItem(folderList[i]);
