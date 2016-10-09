@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>悬浮窗口示例</title>
+    <script type="text/javascript">
+        window.onscroll = function() {
+            var div = document.getElementById("divSuspended");
+            div.style.top = document.body.scrollTop;
+        }
+        window.onresize = window.onscroll;
+
+        function init() {
+            var df = document.createDocumentFragment();
+            for (var i = 0; i < 20; i++) {
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(" Line " + i));
+                df.appendChild(p);
+            }
+            document.body.appendChild(df);
+            window.onscroll();
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <p>Try scrolling this window.</p>
+    <div id="divSuspended" style="position: absolute; buttom: 0px; right: 0px; color: #cccccc; width: 150px; height: 30px; background-color: navy">这是悬浮窗口</div>
+</body>
+
+</html>

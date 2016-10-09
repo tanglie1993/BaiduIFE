@@ -1,6 +1,3 @@
-function $(id) {
-    return document.getElementById(id);
-}
 
 var isInEditMode = false;
 var selectedItem = selectData();
@@ -105,92 +102,6 @@ function initElements() {
             fillProjectsList();
         }
     }
-}
-
-function fillTasksList(type) {
-    $("dateTaskList").innerHTML = "";
-    var tasksByDate = selectTasksSortByDate(type);
-    for(var i = 0; i < tasksByDate.length; i++){
-        addOuterListItem(tasksByDate[i]);
-    } 
-}
-
-function addOuterListItem(tasksInDate){
-    var outerListItem = document.createElement("li");
-    addOuterListItemTitle(outerListItem, tasksInDate[0].date);
-    for(var i = 0; i < tasksInDate.length; i++){
-        var innerList = document.createElement("ul");
-        addInnerListItem(innerList, tasksInDate[i].title);
-        outerListItem.appendChild(innerList);
-    } 
-    $("dateTaskList").appendChild(outerListItem);
-}
-
-function addOuterListItemTitle(outerListItem, date){
-    var outerListItemTitleDiv = document.createElement("div");
-    outerListItemTitleDiv.className = "dateDiv";
-    var outerListItemTitleContent = document.createElement("p");
-    outerListItemTitleContent.className = "dateText";
-    outerListItemTitleContent.innerHTML = date;
-    outerListItemTitleDiv.appendChild(outerListItemTitleContent);
-    outerListItem.appendChild(outerListItemTitleDiv);
-}
-
-function addInnerListItem(innerList, title){
-    var innerListItem = document.createElement("li");
-    innerListItem.className = "todoName";
-    var innerListItemContent = document.createElement("p");
-    innerListItemContent.className = "todoNameText";
-    innerListItemContent.innerHTML = title;
-    innerListItem.appendChild(innerListItemContent);
-    innerList.appendChild(innerListItem);
-}
-
-function fillProjectsList(){
-    while ($("projectList").hasChildNodes()) {
-        $("projectList").removeChild($("projectList").lastChild);
-    }
-    var folderList = getFolderList();
-    for(var i = 0; i < folderList.length; i++){
-        addFolderItem(folderList[i]);
-    }
-}
-
-function addFolderItem(folder){
-    var folderItem = document.createElement("li");
-    addFolderItemHeader(folderItem, folder.name);
-    for(var i = 0; i < folder.projects.length; i++){
-        addProjectItem(folderItem, folder.projects[i].name);
-    }
-    $("projectList").appendChild(folderItem);
-}
-
-function addFolderItemHeader(folderItem, name){
-    var categoryNameDiv = document.createElement("div");
-    categoryNameDiv.className = "categoryNameDiv";
-    var folderImage = document.createElement("img");
-    folderImage.className = "categoryNameImage";
-    folderImage.src = "img/folder.png";
-    var categoryNameText = document.createElement("p");
-    categoryNameText.className = "categoryNameText";
-    categoryNameText.innerHTML = name;
-    categoryNameDiv.appendChild(folderImage);
-    categoryNameDiv.appendChild(categoryNameText);
-    folderItem.appendChild(categoryNameDiv);
-}
-
-function addProjectItem(folderItem, name){
-    var projectName = document.createElement("li");
-    projectName.className="projectName";
-    var projectNameImage = document.createElement("img");
-    projectNameImage.className = "projectNameImage";
-    projectNameImage.src = "img/task.png";
-    var projectNameText = document.createElement("p");
-    projectNameText.className = "projectNameText";
-    projectNameText.innerHTML = name;
-    projectName.appendChild(projectNameImage);
-    projectName.appendChild(projectNameText);
-    folderItem.appendChild(projectName);
 }
 
 initData();
