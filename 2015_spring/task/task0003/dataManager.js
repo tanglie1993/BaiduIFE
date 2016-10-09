@@ -1,3 +1,9 @@
+function initData(){
+    if(getFolderList().length == 0){
+        addFolder("默认文件夹");
+    }
+}
+
 function selectData(){
     var result = new Array();
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
@@ -44,7 +50,6 @@ function selectTasksSortByDate(type){
     var result = new Array();
     var resultDay = new Array();
     if(window.localStorage.length == 0){
-        result.push(resultDay);
         return result;
     }
     var storage = getSortedStorage();
@@ -67,7 +72,9 @@ function selectTasksSortByDate(type){
         }
         resultDay.push(val);
     }
-    result.push(resultDay);
+    if(resultDay.length > 0){
+        result.push(resultDay);
+    }
     return result;
 }
 

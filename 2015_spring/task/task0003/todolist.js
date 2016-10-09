@@ -190,6 +190,7 @@ function addProjectItem(folderItem, name){
     folderItem.appendChild(projectName);
 }
 
+initData();
 fillTasksList("all");
 fillProjectsList();
 initElements();
