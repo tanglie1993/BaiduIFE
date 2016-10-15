@@ -33,6 +33,10 @@ function addFolder(name){
     window.localStorage.setItem(folder.id, JSON.stringify(folder));
 }
 
+function deleteFolder(id){
+    window.localStorage.removeItem(id);
+}
+
 function getFolderMaxId(){
     var maxId = 20000;
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
