@@ -1,3 +1,5 @@
+var selectedTaskDiv = null;
+
 function fillTasksList(type) {
     $("dateTaskList").innerHTML = "";
     var tasksByDate = selectTasksSortByDate(type);
@@ -33,6 +35,32 @@ function addInnerListItem(innerList, title){
     var innerListItemContent = document.createElement("p");
     innerListItemContent.className = "todoNameText";
     innerListItemContent.innerHTML = title;
+    innerListItemContent.selected = false;
+    innerListItemContent.onclick = function(){
+        if(innerListItemContent.selected == false){
+            innerListItemContent.className = "todoNameTextSelected";
+            innerListItemContent.selected = true;
+            if(selectedTaskDiv !== null){
+                selectedTaskDiv.className = "todoNameText";
+                selectedTaskDiv.selected = false;
+            }
+            selectedTaskDiv = innerListItemContent;
+        }else{
+            innerListItemContent.className = "todoNameText";
+            innerListItemContent.selected = false;
+        }
+    }
+    innerListItemContent.onmouseover = function () {
+        if(innerListItemContent.selected == false){
+            innerListItemContent.className = "todoNameTextSelected";
+        }
+    }
+    innerListItemContent.onmouseout = function () {
+        if(innerListItemContent.selected == false){
+            innerListItemContent.className = "todoNameText";
+        }
+        
+    }
     innerListItem.appendChild(innerListItemContent);
     innerList.appendChild(innerListItem);
 }

@@ -225,7 +225,17 @@
 
 .todoNameText {
     margin: 0px;
+    background-color: yellow;
     position: relative;
+    left: 35px;
+    top: 7px;
+    font-size: 14px;
+}
+
+.todoNameTextSelected {
+    margin: 0px;
+    position: relative;
+    background-color: red;
     left: 35px;
     top: 7px;
     font-size: 14px;

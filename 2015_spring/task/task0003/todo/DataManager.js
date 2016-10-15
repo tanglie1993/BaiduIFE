@@ -40,8 +40,7 @@ function addTask(name){
     var task = new Object();
     var maxId = getTaskMaxId();
     task.id = maxId+1;
-    task.title = "title";
-    task.name = name;
+    task.title = name;
     task.type = "unfinished";
     task.content = "content";
     var date = new Date();
