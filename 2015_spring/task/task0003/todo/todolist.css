@@ -142,6 +142,12 @@
     top: 9px;
 }
 
+.categoryAddImage {
+    position: absolute;
+    right: 40px;
+    top: 8px;
+}
+
 .categoryNameText {
     position: absolute;
     left: 50px;
@@ -162,21 +168,28 @@
 }
 
 .projectNameImage {
-    float: left;
-    margin-left: 45px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    position: relative;
+    left: 45px;
+    top: 10px;
 }
 
 .projectNameText {
     margin: 0px;
     position: relative;
-    left: 15px;
-    top: 7px;
+    left: 65px;
+    top: -9px;
     font-size: 14px;
 }
 
+.folderItem{
+    position: relative;
+}
+
 .projectName {
+    height: 28px;
+}
+
+.projectNameSelected {
     background-color: white;
     height: 28px;
 }

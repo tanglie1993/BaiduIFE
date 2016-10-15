@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task0002-1</title>
+    <style type="text/css">
+        @import"todolist.css";
+    </style>
+
+</head>
+
+<body style="height: 100%;">
+    <div id="header" class="border">
+        <p id="title">GTD Tools</p>
+    </div>
+    <div id="categoryColumn" class="border">
+
+        <ul id="projectList">
+        </ul>
+        <div class="addCategoryDiv border">
+            <img id="addCategoryImage" class="addCategoryImage" src="img/addcategory.png" />
+            <p class="addCategoryText">新增分类</p>
+        </div>
+    </div>
+
+    <div id="tasksColumn" class="border">
+        <div id="tasksHeader" class="border">
+            <div id="allTasksButton" class="selectTasksDiv border">
+                <p class="centerInParentText">所有</p>
+            </div>
+            <div id="unfinishedTasksButton" class="unselectTasksDiv">
+                <p class="centerInParentText">未完成</p>
+            </div>
+            <div id="finishedTasksButton" class="unselectTasksDiv">
+                <p class="centerInParentText">已完成</p>
+            </div>
+        </div>
+        <div id="dateTaskDiv">
+            <ul id="dateTaskList">
+            </ul>
+        </div>
+
+        <div class="addCategoryDiv border">
+            <img id="addTaskImage" class="addCategoryImage" src="img/addcategory.png" />
+            <p class="addCategoryText">新增任务</p>
+        </div>
+    </div>
+    <div id="selectedTaskColumn">
+        <div id="selectedTaskTitleDiv" class="border">
+            <p id="selectedTaskTitleText">to-do 6</p>
+            <img id="tickImage" src="img/tick.png" />
+            <img id="writeImage" src="img/write.png" />
+            <input id="selectedTaskNameInput" />
+        </div>
+
+        <div id="selectedTaskTimeDiv" class="border">
+            <p id="selectedTaskTimeText">任务日期：2015-04-30</p>
+            <input id="selectedTaskTimeInput" type="date" value="2016-01-01" />
+        </div>
+
+        <div id="selectedTaskContentDiv" class="border">
+            <div id="selectedTaskContentTextDiv">
+                <p id="selectedTaskContentText">ssssss</p>
+                <textarea id="selectedTaskContentTextArea"></textarea>
+            </div>
+            <div id="selectedTaskContentButtonsDiv" class="border">
+                <div id="saveContentDiv" class="baseContentDiv border">
+                    <p class="centerInParentText">确定</p>
+                </div>
+                <div id="cancelContentDiv" class="baseContentDiv border">
+                    <p class="centerInParentText">取消</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="Utils.js"></script>
+    <script src="TasksListInitiator.js"></script>
+    <script src="ProjectsListInitiator.js"></script>
+    <script src="DataManager.js"></script>
+    <script src="todolist.js"></script>
+</body>
+
+</html>

@@ -10,6 +10,7 @@ function fillProjectsList() {
 
 function addFolderItem(folder) {
     var folderItem = document.createElement("li");
+    folderItem.className = "folderItem";
     addFolderItemHeader(folderItem, folder.name, folder.id);
     for (var i = 0; i < folder.projects.length; i++) {
         addProjectItem(folderItem, folder.projects[i].name);
@@ -32,7 +33,7 @@ function addFolderItemHeader(folderItem, name, id) {
 
     var deleteImage = document.createElement("img");
     deleteImage.className = "categoryDeleteImage";
-    deleteImage.src = "img/delete.png";
+    deleteImage.src = "img/delete_project.png";
     deleteImage.onclick = function () {
         var r = confirm("是否确定删除？");
         if (r == true) {
@@ -43,17 +44,34 @@ function addFolderItemHeader(folderItem, name, id) {
     deleteImage.style.visibility = "hidden";
     categoryNameDiv.appendChild(deleteImage);
 
+    var addImage = document.createElement("img");
+    addImage.className = "categoryAddImage";
+    addImage.src = "img/add_project.png";
+    addImage.onclick = function () {
+        var projectName = prompt("请输入项目名称");
+        if(projectName !== null){
+            addProject(projectName, id);
+            fillProjectsList();   
+        }
+    };
+    addImage.style.visibility = "hidden";
+    categoryNameDiv.appendChild(addImage);
+
     categoryNameDiv.appendChild(categoryNameText);
     categoryNameDiv.onmouseover = function () {
         categoryNameDiv.className = "categoryNameDivSelected";
         deleteImage.style.visibility = "visible";
+        addImage.style.visibility = "visible";
     }
     categoryNameDiv.onmouseout = function () {
         categoryNameDiv.className = "categoryNameDiv";
         deleteImage.style.visibility = "hidden";
+        addImage.style.visibility = "hidden";
     }
     folderItem.appendChild(categoryNameDiv);
 }
+
+var selectedProject = null;
 
 function addProjectItem(folderItem, name) {
     var projectName = document.createElement("li");
@@ -66,5 +84,33 @@ function addProjectItem(folderItem, name) {
     projectNameText.innerHTML = name;
     projectName.appendChild(projectNameImage);
     projectName.appendChild(projectNameText);
+    projectName.selected = false;
+    projectName.onclick = function(){
+        if(projectName.selected == false){
+            projectName.className = "projectNameSelected";
+            projectName.selected = true;
+            if(selectedProject === null){
+               selectedProject = projectName;
+            }else{
+                selectedProject.className = "projectName";
+                selectedProject.selected = false;
+                selectedProject = projectName;
+            }
+        }else{
+            projectName.className = "projectName";
+            projectName.selected = false;
+        }
+    }
+    projectName.onmouseover = function () {
+        if(projectName.selected == false){
+            projectName.className = "projectNameSelected";
+        }
+    }
+    projectName.onmouseout = function () {
+        if(projectName.selected == false){
+            projectName.className = "projectName";
+        }
+        
+    }
     folderItem.appendChild(projectName);
 }

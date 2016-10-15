@@ -33,6 +33,28 @@ function addFolder(name){
     window.localStorage.setItem(folder.id, JSON.stringify(folder));
 }
 
+function addProject(name, folderId){
+    var project = new Object();
+    var maxId = getProjectMaxId();
+    project.id = maxId+1;
+    project.name = name;
+    project.folder = folderId;
+    window.localStorage.setItem(project.id, JSON.stringify(project));
+}
+
+function getProjectMaxId(){
+    var maxId = 10000;
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id >= 10000 && val.id < 20000 && val.id > maxId){
+            maxId = val.id;
+        }
+    }
+    return maxId;
+}
+
 function deleteFolder(id){
     window.localStorage.removeItem(id);
 }
