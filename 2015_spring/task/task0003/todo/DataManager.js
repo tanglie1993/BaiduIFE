@@ -1,4 +1,5 @@
 var selectedProjectId;
+var selectedTasksType = "all";
 
 function initData(){
     if(getFolderList().length == 0){
@@ -126,6 +127,12 @@ function getFolderMaxId(){
 }
 
 function selectTasksSortByDate(type){
+    if(type === null){
+        type = selectedTasksType;
+    }else{
+        selectedTasksType = type;
+    }
+    
     var result = new Array();
     var resultDay = new Array();
     if(window.localStorage.length == 0){
@@ -139,6 +146,9 @@ function selectTasksSortByDate(type){
             continue;
         }
         if(type == "unfinished" && val.type != "unfinished"){
+            continue;
+        }
+        if(selectedProjectId !== null && selectedProjectId != val.projectId){
             continue;
         }
         if(lastTask === undefined){

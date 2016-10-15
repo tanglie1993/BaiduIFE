@@ -111,6 +111,7 @@ function addProjectItem(folderItem, name, projectId) {
                 selectedProject = projectName;
                 selectedProjectId = projectId;
             }
+            fillTasksList("all");
         }else{
             projectName.className = "projectName";
             projectName.selected = false;
