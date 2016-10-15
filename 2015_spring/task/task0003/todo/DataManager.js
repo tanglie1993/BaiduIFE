@@ -57,6 +57,14 @@ function getProjectMaxId(){
 
 function deleteFolder(id){
     window.localStorage.removeItem(id);
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id >= 10000 && val.id < 20000 && val.folder == id){
+            window.localStorage.removeItem(parseInt(key));
+        }
+    }
 }
 
 function getFolderMaxId(){
