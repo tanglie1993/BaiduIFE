@@ -181,16 +181,26 @@
     font-size: 14px;
 }
 
+.projectDeleteImage {
+    margin: 0px;
+    position: absolute;
+    top: 9px;
+    right: 20px;
+}
+
+
 .folderItem{
     position: relative;
 }
 
 .projectName {
     height: 28px;
+    position: relative;
 }
 
 .projectNameSelected {
     background-color: white;
+    position: relative;
     height: 28px;
 }
 

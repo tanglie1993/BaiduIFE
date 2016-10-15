@@ -13,7 +13,7 @@ function addFolderItem(folder) {
     folderItem.className = "folderItem";
     addFolderItemHeader(folderItem, folder.name, folder.id);
     for (var i = 0; i < folder.projects.length; i++) {
-        addProjectItem(folderItem, folder.projects[i].name);
+        addProjectItem(folderItem, folder.projects[i].name, folder.projects[i].id);
     }
     $("projectList").appendChild(folderItem);
 }
@@ -73,7 +73,7 @@ function addFolderItemHeader(folderItem, name, id) {
 
 var selectedProject = null;
 
-function addProjectItem(folderItem, name) {
+function addProjectItem(folderItem, name, projectId) {
     var projectName = document.createElement("li");
     projectName.className = "projectName";
     var projectNameImage = document.createElement("img");
@@ -85,6 +85,18 @@ function addProjectItem(folderItem, name) {
     projectName.appendChild(projectNameImage);
     projectName.appendChild(projectNameText);
     projectName.selected = false;
+    projectName.deleteImage = document.createElement("img");
+    projectName.deleteImage.className = "projectDeleteImage";
+    projectName.deleteImage.src = "img/delete_project.png";
+    projectName.deleteImage.onclick = function () {
+        var r = confirm("是否确定删除？");
+        if (r == true) {
+            deleteProject(projectId);
+            fillProjectsList();
+        }
+    };
+    projectName.deleteImage.style.visibility = "hidden";
+    projectName.appendChild(projectName.deleteImage);
     projectName.onclick = function(){
         if(projectName.selected == false){
             projectName.className = "projectNameSelected";
@@ -94,21 +106,25 @@ function addProjectItem(folderItem, name) {
             }else{
                 selectedProject.className = "projectName";
                 selectedProject.selected = false;
+                selectedProject.deleteImage.style.visibility = "hidden";
                 selectedProject = projectName;
             }
         }else{
             projectName.className = "projectName";
             projectName.selected = false;
+            projectName.deleteImage.style.visibility = "hidden";
         }
     }
     projectName.onmouseover = function () {
         if(projectName.selected == false){
             projectName.className = "projectNameSelected";
+            projectName.deleteImage.style.visibility = "visible";
         }
     }
     projectName.onmouseout = function () {
         if(projectName.selected == false){
             projectName.className = "projectName";
+            projectName.deleteImage.style.visibility = "hidden";
         }
         
     }

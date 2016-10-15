@@ -67,6 +67,16 @@ function deleteFolder(id){
     }
 }
 
+function deleteProject(id){
+    window.localStorage.removeItem(id);
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        if(parseInt(key) == id){
+             window.localStorage.removeItem(parseInt(key));
+        }
+    }
+}
+
 function getFolderMaxId(){
     var maxId = 20000;
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
