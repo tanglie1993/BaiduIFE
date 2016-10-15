@@ -136,6 +136,12 @@
     top: 9px;
 }
 
+.categoryDeleteImage {
+    position: absolute;
+    right: 20px;
+    top: 9px;
+}
+
 .categoryNameText {
     position: absolute;
     left: 50px;
@@ -147,6 +153,12 @@
 .categoryNameDiv {
     height: 28px;
     position: relative;
+}
+
+.categoryNameDivSelected {
+    height: 28px;
+    position: relative;
+    background-color: white;
 }
 
 .projectNameImage {
@@ -305,6 +317,12 @@
     height: 40px;
     top: -1px;
     position: absolute;
+}
+
+.deleteImage{
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
 ul {

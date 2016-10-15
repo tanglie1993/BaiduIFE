@@ -20,14 +20,31 @@ function addFolderItem(folder){
 function addFolderItemHeader(folderItem, name){
     var categoryNameDiv = document.createElement("div");
     categoryNameDiv.className = "categoryNameDiv";
-    var folderImage = document.createElement("img");
-    folderImage.className = "categoryNameImage";
-    folderImage.src = "img/folder.png";
+    
     var categoryNameText = document.createElement("p");
     categoryNameText.className = "categoryNameText";
     categoryNameText.innerHTML = name;
+    
+    var folderImage = document.createElement("img");
+    folderImage.className = "categoryNameImage";
+    folderImage.src = "img/folder.png";
     categoryNameDiv.appendChild(folderImage);
+    
+    var deleteImage = document.createElement("img");
+    deleteImage.className = "categoryDeleteImage";
+    deleteImage.src = "img/delete.png";
+
+    categoryNameDiv.appendChild(deleteImage);
+    
     categoryNameDiv.appendChild(categoryNameText);
+    categoryNameDiv.onmouseover = function(){
+        categoryNameDiv.className = "categoryNameDivSelected";
+        deleteImage.style.visibility = "visible";
+    }
+    categoryNameDiv.onmouseout = function(){
+        categoryNameDiv.className = "categoryNameDiv";
+        deleteImage.style.visibility = "hidden";
+    }
     folderItem.appendChild(categoryNameDiv);
 }
 
