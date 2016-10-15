@@ -102,6 +102,14 @@ function initElements() {
             fillProjectsList();
         }
     }
+    
+    $("addTaskImage").onclick = function(){
+        var taskName = prompt("请输入任务名称");
+        if(taskName !== null){
+            addTask(taskName);
+            fillTasksList("all");
+        }
+    }
 }
 
 initData();

@@ -1,3 +1,5 @@
+var selectedProjectId;
+
 function initData(){
     if(getFolderList().length == 0){
         addFolder("默认文件夹");
@@ -33,6 +35,26 @@ function addFolder(name){
     window.localStorage.setItem(folder.id, JSON.stringify(folder));
 }
 
+function addTask(name){
+    var task = new Object();
+    var maxId = getTaskMaxId();
+    task.id = maxId+1;
+    task.title = "title";
+    task.name = name;
+    task.type = "unfinished";
+    task.content = "content";
+    var date = new Date();
+    task.date = "" + (1900 + date.getYear()) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    if(selectedProjectId === null){
+        task.projectId = -1;
+    }else{
+        task.projectId = selectedProjectId;
+    }
+    
+    
+    window.localStorage.setItem(task.id, JSON.stringify(task));
+}
+
 function addProject(name, folderId){
     var project = new Object();
     var maxId = getProjectMaxId();
@@ -40,6 +62,19 @@ function addProject(name, folderId){
     project.name = name;
     project.folder = folderId;
     window.localStorage.setItem(project.id, JSON.stringify(project));
+}
+
+function getTaskMaxId(){
+    var maxId = 0;
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id < 10000 && val.id > maxId){
+            maxId = val.id;
+        }
+    }
+    return maxId;
 }
 
 function getProjectMaxId(){

@@ -1,3 +1,5 @@
+var selectedProject = null;
+
 function fillProjectsList() {
     while ($("projectList").hasChildNodes()) {
         $("projectList").removeChild($("projectList").lastChild);
@@ -71,8 +73,6 @@ function addFolderItemHeader(folderItem, name, id) {
     folderItem.appendChild(categoryNameDiv);
 }
 
-var selectedProject = null;
-
 function addProjectItem(folderItem, name, projectId) {
     var projectName = document.createElement("li");
     projectName.className = "projectName";
@@ -103,11 +103,13 @@ function addProjectItem(folderItem, name, projectId) {
             projectName.selected = true;
             if(selectedProject === null){
                selectedProject = projectName;
+               selectedProjectId = projectId;
             }else{
                 selectedProject.className = "projectName";
                 selectedProject.selected = false;
                 selectedProject.deleteImage.style.visibility = "hidden";
                 selectedProject = projectName;
+                selectedProjectId = projectId;
             }
         }else{
             projectName.className = "projectName";
