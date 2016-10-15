@@ -220,25 +220,45 @@
 }
 
 .todoName {
-    height: 28px;
+    position: relative;
+    height: 30px;
+    margin: 2px;
+    padding: 0px;
+}
+
+.todoNameSelected {
+    background-color: #F2F2F2;
+    position: relative;
+    height: 30px;
+    margin: 2px;
+    padding: 0px;
+}
+
+.taskOuterListItem{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+.todoNameContent {
+    margin: 0px;
+    padding: 0px;
+    background-color: yellow;
+}
+
+.todoNameContentSelected {
+    margin: 0px;
+    padding: 0px;
+    background-color: red;
 }
 
 .todoNameText {
-    margin: 0px;
-    background-color: yellow;
-    position: relative;
-    left: 35px;
-    top: 7px;
     font-size: 14px;
-}
-
-.todoNameTextSelected {
-    margin: 0px;
-    position: relative;
-    background-color: red;
-    left: 35px;
-    top: 7px;
-    font-size: 14px;
+    margin-top: 0px;
+    padding-top: 9px;
+    margin-left: 9px;
+    margin-bottom: 0px;
+    
 }
 
 #dateTaskDiv {

@@ -100,6 +100,7 @@ function addProjectItem(folderItem, name, projectId) {
     projectName.onclick = function(){
         if(projectName.selected == false){
             projectName.className = "projectNameSelected";
+            projectName.deleteImage.style.visibility = "visible";
             projectName.selected = true;
             if(selectedProject === null){
                selectedProject = projectName;
@@ -116,6 +117,8 @@ function addProjectItem(folderItem, name, projectId) {
             projectName.className = "projectName";
             projectName.selected = false;
             projectName.deleteImage.style.visibility = "hidden";
+            selectedProject = null;
+            selectedProjectId = null;
         }
     }
     projectName.onmouseover = function () {

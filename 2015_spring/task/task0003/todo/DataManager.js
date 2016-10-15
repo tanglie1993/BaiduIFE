@@ -102,6 +102,10 @@ function deleteFolder(id){
     }
 }
 
+function deleteTask(id){
+    window.localStorage.removeItem(id);
+}
+
 function deleteProject(id){
     window.localStorage.removeItem(id);
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
