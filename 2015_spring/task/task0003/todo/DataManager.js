@@ -28,6 +28,17 @@ function selectData(){
     }
 }
 
+function selectTask(taskId){
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        if(parseInt(key) == taskId){
+            var val = window.localStorage.getItem(key); 
+            return JSON.parse(val);
+        }
+    }
+    return null;
+}
+
 function addFolder(name){
     var folder = new Object();
     var maxId = getFolderMaxId();

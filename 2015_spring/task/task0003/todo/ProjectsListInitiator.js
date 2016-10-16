@@ -37,6 +37,9 @@ function addFolderItemHeader(folderItem, name, id) {
     deleteImage.className = "categoryDeleteImage";
     deleteImage.src = "img/delete_project.png";
     deleteImage.onclick = function () {
+        if(isInEditMode){
+            return;
+        }
         var r = confirm("是否确定删除？");
         if (r == true) {
             deleteFolder(id);
@@ -50,6 +53,9 @@ function addFolderItemHeader(folderItem, name, id) {
     addImage.className = "categoryAddImage";
     addImage.src = "img/add_project.png";
     addImage.onclick = function () {
+        if(isInEditMode){
+            return;
+        }
         var projectName = prompt("请输入项目名称");
         if(projectName !== null){
             addProject(projectName, id);
@@ -61,11 +67,17 @@ function addFolderItemHeader(folderItem, name, id) {
 
     categoryNameDiv.appendChild(categoryNameText);
     categoryNameDiv.onmouseover = function () {
+        if(isInEditMode){
+            return;
+        }
         categoryNameDiv.className = "categoryNameDivSelected";
         deleteImage.style.visibility = "visible";
         addImage.style.visibility = "visible";
     }
     categoryNameDiv.onmouseout = function () {
+        if(isInEditMode){
+            return;
+        }
         categoryNameDiv.className = "categoryNameDiv";
         deleteImage.style.visibility = "hidden";
         addImage.style.visibility = "hidden";
@@ -89,6 +101,9 @@ function addProjectItem(folderItem, name, projectId) {
     projectName.deleteImage.className = "projectDeleteImage";
     projectName.deleteImage.src = "img/delete_project.png";
     projectName.deleteImage.onclick = function () {
+        if(isInEditMode){
+            return;
+        }
         var r = confirm("是否确定删除？");
         if (r == true) {
             deleteProject(projectId);
@@ -98,6 +113,9 @@ function addProjectItem(folderItem, name, projectId) {
     projectName.deleteImage.style.visibility = "hidden";
     projectName.appendChild(projectName.deleteImage);
     projectName.onclick = function(){
+        if(isInEditMode){
+            return;
+        }
         if(projectName.selected == false){
             projectName.className = "projectNameSelected";
             projectName.deleteImage.style.visibility = "visible";
@@ -122,12 +140,18 @@ function addProjectItem(folderItem, name, projectId) {
         }
     }
     projectName.onmouseover = function () {
+        if(isInEditMode){
+            return;
+        }
         if(projectName.selected == false){
             projectName.className = "projectNameSelected";
             projectName.deleteImage.style.visibility = "visible";
         }
     }
     projectName.onmouseout = function () {
+        if(isInEditMode){
+            return;
+        }
         if(projectName.selected == false){
             projectName.className = "projectName";
             projectName.deleteImage.style.visibility = "hidden";
