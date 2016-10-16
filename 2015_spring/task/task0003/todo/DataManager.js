@@ -41,7 +41,7 @@ function addTask(name){
     task.id = maxId+1;
     task.title = name;
     task.type = "unfinished";
-    task.content = "content";
+    task.content = "";
     var date = new Date();
     task.date = "" + (1900 + date.getYear()) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     if(selectedProjectId === null){

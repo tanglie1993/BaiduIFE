@@ -356,6 +356,7 @@
 
 #selectedTaskColumn {
     position: absolute;
+    min-width: 300px;
     top: 61px;
     bottom: 0px;
     left: 460px;
