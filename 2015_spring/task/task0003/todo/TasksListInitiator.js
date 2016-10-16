@@ -46,7 +46,7 @@ function addInnerListItem(innerList, title, taskId){
             innerListItem.className = "todoNameSelected";
             innerListItem.selected = true;
             innerListItem.deleteImage.style.visibility = "visible";
-            var task = selectTask(taskId);
+            var task = select(taskId);
             $("selectedTaskTitleText").innerHTML = task.title;
             $("selectedTaskTimeText").innerHTML = task.date;
             $("selectedTaskContentText").innerHTML = task.content;

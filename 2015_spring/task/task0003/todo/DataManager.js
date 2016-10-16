@@ -12,10 +12,10 @@ function finishTask(task){
     window.localStorage.setItem(task.id, JSON.stringify(task));
 }
 
-function selectTask(taskId){
+function select(id){
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
-        if(parseInt(key) == taskId){
+        if(parseInt(key) == id){
             var val = window.localStorage.getItem(key); 
             return JSON.parse(val);
         }
@@ -87,11 +87,21 @@ function getProjectMaxId(){
 
 function deleteFolder(id){
     window.localStorage.removeItem(id);
+    var tasks = new Object();
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
         var val = window.localStorage.getItem(key); 
         val = JSON.parse(val);
         if(val.id >= 10000 && val.id < 20000 && val.folder == id){
+            tasks[val.id] = true;
+            window.localStorage.removeItem(parseInt(key));
+        }
+    }
+    for (var i = 0; i <= window.localStorage.length - 1; i++) {
+        var key = window.localStorage.key(i);
+        var val = window.localStorage.getItem(key); 
+        val = JSON.parse(val);
+        if(val.id > 20000 && tasks[val.projectId] !== null){
             window.localStorage.removeItem(parseInt(key));
         }
     }
@@ -105,8 +115,11 @@ function deleteProject(id){
     window.localStorage.removeItem(id);
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
-        if(parseInt(key) == id){
-             window.localStorage.removeItem(parseInt(key));
+        if(parseInt(key) < 10000){
+            var val = window.localStorage.getItem(key);
+            if(JSON.parse(val).projectId == id){
+                window.localStorage.removeItem(parseInt(key));
+            }
         }
     }
 }

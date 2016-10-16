@@ -40,10 +40,23 @@ function addFolderItemHeader(folderItem, name, id) {
         if(isInEditMode){
             return;
         }
-        var r = confirm("是否确定删除？");
-        if (r == true) {
+        var isDeleteConfirmed = confirm("是否确定删除？");
+        if (isDeleteConfirmed == true) {
             deleteFolder(id);
+            if(select(selectedProjectId) === null){
+                selectedProject = null;
+                selectedProjectId = null;
+            }
+            var selectedTask = select(selectedItem.id);
             fillProjectsList();
+            if(selectedTask != null){
+                fillTasksList(selectedTasksType);
+            }else{
+                selectedItem = null;
+                selectedProject = null;
+                selectedProjectId = null;
+                fillTasksList(selectedTasksType);
+            }
         }
     };
     deleteImage.style.visibility = "hidden";
@@ -130,7 +143,7 @@ function addProjectItem(folderItem, name, projectId) {
                 selectedProject = projectName;
                 selectedProjectId = projectId;
             }
-            fillTasksList("all");
+            fillTasksList(selectedTasksType);
         }else{
             projectName.className = "projectName";
             projectName.selected = false;
