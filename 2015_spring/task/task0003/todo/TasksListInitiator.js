@@ -96,8 +96,8 @@ function addInnerListItem(innerList, title, taskId){
         if(isInEditMode){
             return;
         }
-        var r = confirm("是否确定删除？");
-        if (r == true) {
+        var isDeleteConfirmed = confirm("是否确定删除？");
+        if (isDeleteConfirmed == true) {
             deleteTask(taskId);
             fillTasksList(selectedTasksType);
         }

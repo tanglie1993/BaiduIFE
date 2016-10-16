@@ -66,6 +66,15 @@ function initElements() {
             switchToEditMode();
         }
     };
+    $("tickImage").onclick = function () {
+        if(selectedItem.id !== null){
+            var finish = confirm("是否将任务标记为已完成？");
+            if(finish == true){
+                finishTask(selectedItem);
+                fillTasksList(selectedTasksType);
+            }
+        }
+    }
 
     $("selectedTaskNameInput").style.visibility = "hidden";
 

@@ -7,25 +7,9 @@ function initData(){
     }
 }
 
-function selectData(){
-    var result = new Array();
-    for (var i = 0; i <= window.localStorage.length - 1; i++) {
-        var key = window.localStorage.key(i);
-        var val = window.localStorage.getItem(key); 
-        result.push(val);
-    }
-    if(result.length > 0){
-        console.log("result[0]");
-        return JSON.parse(result[0]);
-    }else{
-        var item = new Object();
-        item.id = 1000;
-        item.title = "title";
-        item.date = "2016-01-01";
-        item.content = "content";
-        console.log("item");
-        return item;
-    }
+function finishTask(task){
+    task.type = "finished";
+    window.localStorage.setItem(task.id, JSON.stringify(task));
 }
 
 function selectTask(taskId){
