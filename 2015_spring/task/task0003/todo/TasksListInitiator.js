@@ -1,5 +1,4 @@
-var selectedTaskLi = null;
-var selectedItem = null;
+
 
 function fillTasksList(type) {
     $("dateTaskList").innerHTML = "";

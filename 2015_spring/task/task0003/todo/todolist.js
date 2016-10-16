@@ -1,5 +1,5 @@
 
-var isInEditMode = false;
+
 
 function switchToEditMode() {
     $("selectedTaskTitleText").style.visibility = "hidden";

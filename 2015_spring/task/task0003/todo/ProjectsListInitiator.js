@@ -1,4 +1,4 @@
-var selectedProject = null;
+
 
 function fillProjectsList() {
     while ($("projectList").hasChildNodes()) {
@@ -47,7 +47,10 @@ function addFolderItemHeader(folderItem, name, id) {
                 selectedProject = null;
                 selectedProjectId = null;
             }
-            var selectedTask = select(selectedItem.id);
+            var selectedTask = null;
+            if(selectedItem !== null){
+                selectedTask = select(selectedItem.id);
+            }
             fillProjectsList();
             if(selectedTask != null){
                 fillTasksList(selectedTasksType);
@@ -57,6 +60,7 @@ function addFolderItemHeader(folderItem, name, id) {
                 selectedProjectId = null;
                 fillTasksList(selectedTasksType);
             }
+            fillProjectsList();
         }
     };
     deleteImage.style.visibility = "hidden";
@@ -150,6 +154,7 @@ function addProjectItem(folderItem, name, projectId) {
             projectName.deleteImage.style.visibility = "hidden";
             selectedProject = null;
             selectedProjectId = null;
+            fillTasksList(selectedTasksType);
         }
     }
     projectName.onmouseover = function () {
