@@ -4,3 +4,6 @@ Thumbs.db
 .DS_Store
 *.swp
 /dist
+2015_spring/task/js/.idea/workspace.xml
+*.iml
+2015_spring/task/js/.idea/modules.xml
