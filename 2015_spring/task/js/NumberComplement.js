@@ -1,0 +1,1 @@
+/** * @param {number} num * @return {number} */var findComplement = function(num) {    var result = 0    var index = 0    while(num > 0){        if(num % 2 == 0){            result += Math.pow(2, index)        }        num = num >> 1        index++    }    return result};
