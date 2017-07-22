@@ -1,0 +1,49 @@
+<style> 
+.div-match-parent{
+    width:100%; 
+    height:100%; 
+    background-color:#666666; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+} 
+#menu{
+    width:10%; 
+    height:100%; 
+    background-color:#123456; 
+    position: fixed; 
+    left:-10%; 
+} 
+</style> 
+
+<div class="div-match-parent" 
+     onmousedown="onMouseDown()" 
+     onmousemove="onMouseMove()" 
+     onmouseup="onMouseUp()" >
+
+    <div id="menu" />
+</div>
+
+
+
+<script>
+dragging = false
+
+function onMouseDown(){
+    dragging = true;
+}
+    
+function onMouseMove(){
+    if(dragging){
+        var divObj = document.getElementById('menu');
+        divObj.offsetTop = 0
+        divObj.offsetLeft = 0
+        console.log(divObj.offsetTop)
+        divObj.style.left=window.event.pageX;
+    }
+}    
+    
+function onMouseUp(){
+    dragging = false;
+}
+</script>
