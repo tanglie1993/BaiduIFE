@@ -6,7 +6,7 @@ var selectedItem = null;
 var isInEditMode = false;
 
 function initData(){
-    if(getFolderList().length == 0){
+    if(getFolderList().length === 0){
         addFolder("默认文件夹");
     }
 }
@@ -19,7 +19,7 @@ function finishTask(task){
 function select(id){
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
-        if(parseInt(key) == id){
+        if(parseInt(key) === id){
             var val = window.localStorage.getItem(key); 
             return JSON.parse(val);
         }
@@ -28,7 +28,7 @@ function select(id){
 }
 
 function addFolder(name){
-    var folder = new Object();
+    var folder = {};
     var maxId = getFolderMaxId();
     folder.id = maxId+1;
     folder.name = name;
@@ -36,14 +36,13 @@ function addFolder(name){
 }
 
 function addTask(name){
-    var task = new Object();
+    var task = {};
     var maxId = getTaskMaxId();
     task.id = maxId+1;
     task.title = name;
     task.type = "unfinished";
     task.content = "";
-    var date = new Date();
-    task.date = "" + (1900 + date.getYear()) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    task.date = getFormattedDate();
     if(selectedProjectId === null){
         task.projectId = -1;
     }else{
@@ -54,8 +53,21 @@ function addTask(name){
     window.localStorage.setItem(task.id, JSON.stringify(task));
 }
 
+function getFormattedDate() {
+    var date = new Date();
+    var year = date.getFullYear();
+
+    var month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : '0' + month;
+
+    var day = date.getDate().toString();
+    day = day.length > 1 ? day : '0' + day;
+
+    return  year + '-' + month + '-' + day;
+}
+
 function addProject(name, folderId){
-    var project = new Object();
+    var project = {};
     var maxId = getProjectMaxId();
     project.id = maxId+1;
     project.name = name;
@@ -91,12 +103,12 @@ function getProjectMaxId(){
 
 function deleteFolder(id){
     window.localStorage.removeItem(id);
-    var projects = new Object();
+    var projects = {};
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
         var val = window.localStorage.getItem(key); 
         val = JSON.parse(val);
-        if(val.id >= 10000 && val.id < 20000 && val.folder == id){
+        if(val.id >= 10000 && val.id < 20000 && val.folder === id){
             projects[val.id] = true;
             window.localStorage.removeItem(parseInt(key));
         }
@@ -121,7 +133,7 @@ function deleteProject(id){
         var key = window.localStorage.key(i);
         if(parseInt(key) < 10000){
             var val = window.localStorage.getItem(key);
-            if(JSON.parse(val).projectId == id){
+            if(JSON.parse(val).projectId === id){
                 window.localStorage.removeItem(parseInt(key));
             }
         }
@@ -148,22 +160,22 @@ function selectTasksSortByDate(type){
         selectedTasksType = type;
     }
     
-    var result = new Array();
-    var resultDay = new Array();
-    if(window.localStorage.length == 0){
+    var result = [];
+    var resultDay = [];
+    if(window.localStorage.length === 0){
         return result;
     }
     var storage = getSortedStorage();
     var lastTask = undefined; 
     for (var i = 0; i <= storage.length - 1; i++) {
         var val = storage[i]; 
-        if(type == "finished" && val.type != "finished"){
+        if(type === "finished" && val.type !== "finished"){
             continue;
         }
-        if(type == "unfinished" && val.type != "unfinished"){
+        if(type === "unfinished" && val.type !== "unfinished"){
             continue;
         }
-        if(selectedProjectId !== null && selectedProjectId != val.projectId){
+        if(selectedProjectId !== null && selectedProjectId !== val.projectId){
             continue;
         }
         if(lastTask === undefined){
@@ -171,7 +183,7 @@ function selectTasksSortByDate(type){
         }
         if(!inSameDay(lastTask.date, val.date)){
             result.push(resultDay);
-            resultDay = new Array();
+            resultDay = [];
             lastTask = val;
         }
         resultDay.push(val);
@@ -183,15 +195,15 @@ function selectTasksSortByDate(type){
 }
 
 function getFolderList(){
-    var result = new Array();
-    var projects = new Object();
+    var result = [];
+    var projects = {};
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
         var val = window.localStorage.getItem(key); 
         val = JSON.parse(val);
         if(val.id >= 10000 && val.id < 20000){
             if(projects[val.folder] === undefined){
-                projects[val.folder] = new Array();
+                projects[val.folder] = [];
             }
             projects[val.folder].push(val);
         }
@@ -205,7 +217,7 @@ function getFolderList(){
         }
         val.projects = projects[val.id];
         if(val.projects === undefined){
-            val.projects = new Array();
+            val.projects = [];
         }
         result.push(val);
     }
@@ -213,7 +225,7 @@ function getFolderList(){
 }
 
 function getSortedStorage(){
-    var result = new Array();
+    var result = [];
     for (var i = 0; i <= window.localStorage.length - 1; i++) {
         var key = window.localStorage.key(i);
         var val = window.localStorage.getItem(key); 
@@ -241,14 +253,14 @@ function getSortedStorage(){
         }else{
             return 0;
         }
-    })
+    });
     return result;
 }
 
 function inSameDay(date1, date2){
     var dateArray1 = date1.split("-");
     var dateArray2 = date2.split("-");
-    return dateArray1[0] == dateArray2[0] &&
-        dateArray1[1] == dateArray2[1] &&
-        dateArray1[2] == dateArray2[2];
+    return dateArray1[0] === dateArray2[0] &&
+        dateArray1[1] === dateArray2[1] &&
+        dateArray1[2] === dateArray2[2];
 }
