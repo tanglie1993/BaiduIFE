@@ -24,10 +24,11 @@
     <div id="menu" />
 </div>
 
-
+<button onclick="startAnimation()">Click Me</button>
 
 <script>
 dragging = false
+isAnimation = false
 
 function onMouseDown(){
     dragging = true;
@@ -45,5 +46,23 @@ function onMouseMove(){
     
 function onMouseUp(){
     dragging = false;
+}
+
+function startAnimation() {
+  if(isAnimation !== undefined && isAnimation){
+      return
+  }
+  var elem = document.getElementById("menu");   
+  var pos = 0;
+  var animation = setInterval(frame, 5);
+  isAnimation = true
+  function frame() {
+    if (pos == 350) {
+      clearInterval(animation);
+    } else {
+      pos++; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
 }
 </script>
