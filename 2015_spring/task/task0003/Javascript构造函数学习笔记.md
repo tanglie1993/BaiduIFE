@@ -1,6 +1,6 @@
 除了创建对象，构造函数(constructor) 还做了另一件有用的事情—自动为创建的新对象设置了原型对象(prototype object) 。原型对象存放于 ConstructorFunction.prototype 属性中。
 
-<code>
+```
 // 构造函数
 function Foo(y) {
   // 构造函数将会以特定模式创建对象：被创建的对象都会有"y"属性
@@ -47,4 +47,4 @@ console.log(
  
 );
 
-</code>
+```
