@@ -10,26 +10,35 @@
 
 ##原型链
 在 ECMAScript 中，每个由构造器创建的对象拥有一个指向构造器 prototype 属性值的 隐式引用（implicit reference），这个引用称之为 原型（prototype）。进一步，每个原型可以拥有指向自己原型的 隐式引用（即该原型的原型），如此下去，这就是所谓的 原型链（prototype chain）。在具体的语言实现中，每个对象都有一个 __proto__ 属性来实现对原型的 隐式引用。
-<code>
+
+```
  // 声明 Animal 对象构造器 
- function Animal() {} // 将Animal 的 prototype 属性指向一个对象， // 亦可直接理解为指定 Animal 对象的原型 
+ function Animal() {} 
+// 将Animal 的 prototype 属性指向一个对象， 
+// 亦可直接理解为指定 Animal 对象的原型 
  Animal.prototype = {
          name: "animal",
          weight: 0,
          eat: function () {
              alert("Animal is eating!");
          }
-     } // 声明 Mammal 对象构造器 
+     } 
+// 声明 Mammal 对象构造器 
  function Mammal() {
          this.name = "mammal";
-     } // 指定 Mammal 对象的原型为一个 Animal 对象。 // 实际上此处便是在创建 Mammal 对象和Animal 对象之间的原型链 
- Mammal.prototype = new Animal(); // 声明 Horse 对象构造器 
+     } 
+// 指定 Mammal 对象的原型为一个 Animal 对象。 
+// 实际上此处便是在创建 Mammal 对象和Animal 对象之间的原型链 
+ Mammal.prototype = new Animal(); 
+// 声明 Horse 对象构造器 
  function Horse(height, weight) {
      this.name = "horse";
      this.height = height;
      this.weight = weight;
- } // 将 Horse对象的原型指定为一个 Mamal 对象， 继续构建 Horse 与 Mammal 之间的原型链 
- Horse.prototype = new Mammal(); // 重新指定 eat方法, 此方法将覆盖从 Animal 原型继承过来的 eat 方法 
+ } 
+// 将 Horse对象的原型指定为一个 Mammal 对象， 继续构建 Horse 与 Mammal 之间的原型链 
+ Horse.prototype = new Mammal();
+ // 重新指定 eat方法, 此方法将覆盖从 Animal 原型继承过来的 eat 方法 
  Horse.prototype.eat = function () {
          alert("Horse is eating grass!");
      } // 验证并理解原型链 
@@ -37,11 +46,12 @@
  console.log(horse.__proto__ === Horse.prototype);
  console.log(Horse.prototype.__proto__ === Mammal.prototype);
  console.log(Mammal.prototype.__proto__ === Animal.prototype);
-</code>
+```
 
 ##JavaScript 类式继承的实现方法
 目前一些主流的 JS 框架都提供了这种转换机制，也即类式声明方法，比如 Dojo.declare()、Ext.entend() 等等。用户使用这些框架，可以轻易而友好地组织自己的 JS 代码。
-<code>
+
+```
 // 声明 Person 类 
 var Person = Class.extend({
     _issleeping: true,
@@ -65,10 +75,10 @@ console.log(person.isSleeping()); // 打印 false
 console.log(diors.isSleeping()); // 此处全为 true，故打印 true 
 console.log(person instanceof Person && person instanceof Class && diors instanceof Programmer &&
     diors instanceof Person && diors instanceof Class);
-</code>
+```
 
 ##JavaScript 私有成员实现
-<code>
+```
 // 声明 User 构造器 
 function User(pwd) { 
     // 定义私有属性 
@@ -95,7 +105,7 @@ console.log(u.checkPassword("123456"));
 console.log(u.password); 
 // 打印 true 
 console.log(typeof u.getPassword === "undefined");
-</code>
+```
 
 
 
