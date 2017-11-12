@@ -18,7 +18,8 @@ All scopes in JavaScript are created with Function Scope only, they aren’t cre
 
 ###Lexical Scope
 Whenever you see a function within another function, the inner function has access to the scope in the outer function, this is called Lexical Scope or Closure - also referred to as Static Scope
-<code>
+
+```
 // Scope A
 var myFunction = function () {
   // Scope B
@@ -27,31 +28,34 @@ var myFunction = function () {
     // Scope C: `name` is accessible here!
   };
 };
-</code>
+```
 
 ##Scope Chain
 Each function defined has its own nested scope as we know, and any function defined within another function has a local scope which is linked to the outer function - this link is called the chain.
 
 ##Closures
 Inside our scope, we can return things so that they’re available in the parent scope:
-<code>
+
+```
 var sayHello = function (name) {
   var text = 'Hello, ' + name;
   return function () {
     console.log(text);
   };
 };
-</code>
+```
 The function returns a function, which means it needs assignment, and then calling:
-<code>
+
+```
 var helloTodd = sayHello('Todd');
 helloTodd(); // will call the closure and log 'Hello, Todd'
-</code>
+```
 A function doesn’t have to return in order to be called a closure though. Simply accessing variables outside of the immediate lexical scope creates a closure.
 
 ##Scope and ‘this’
 Each scope binds a different value of this depending on how the function is invoked.
-<code>
+
+```
 var myFunction = function () {
   console.log(this); // this = global, [object Window]
 };
@@ -67,9 +71,10 @@ var toggleNav = function () {
   console.log(this); // this = <nav> element
 };
 nav.addEventListener('click', toggleNav, false);
-</code>
+```
 Even inside the same function the scope can be changed and the this value can be changed:
-<code>
+
+```
 var nav = document.querySelector('.nav'); // <nav class="nav">
 var toggleNav = function () {
   console.log(this); // <nav> element
@@ -78,7 +83,7 @@ var toggleNav = function () {
   }, 1000);
 };
 nav.addEventListener('click', toggleNav, false);
-</code>
+```
 
 ##Changing scope with .call(), .apply() and .bind()
 The .call() and .apply() methods are really sweet, they allows you to pass in a scope to a function, which binds the correct this value. 
